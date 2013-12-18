@@ -2,14 +2,14 @@ require 'net/http'
  
 @cameraDelay = 1 # Needed for image sync. 
 @fetchNewImageEvery = '5s'
-@camera1Host = "camera1host"
-@camera2Host = "camera2host"
-@camera3Host = "camera3host"
-@camera4Host = "camera4host"
-@camera5Host = "camera5host"
-@cameraPort = "cameraPort"
-@cameraUsername = 'cameraUsername'
-@cameraPassword = 'cameraPassword'
+@camera1Host = "camera1host"  ## CHANGE
+@camera2Host = "camera2host"  ## CHANGE
+@camera3Host = "camera3host"  ## CHANGE
+@camera4Host = "camera4host"  ## CHANGE
+@camera5Host = "camera5host"  ## CHANGE
+@cameraPort = "cameraPort"  ## CHANGE
+@cameraUsername = 'cameraUsername' ## CHANGE
+@cameraPassword = 'cameraPassword' ## CHANGE
 @cameraURL = "/img/snapshot.cgi?size=2"
 @newFile1 = "assets/images/cameras/snapshot1_new.jpeg"
 @oldFile1 = "assets/images/cameras/snapshot1_old.jpeg"
@@ -56,7 +56,7 @@ SCHEDULER.every @fetchNewImageEvery, first_in: 0 do
 	send_event('camera3', image: make_web_friendly(@oldFile3))
 	send_event('camera4', image: make_web_friendly(@oldFile4))
 	send_event('camera5', image: make_web_friendly(@oldFile5))
-	sleep(@camerasUpdateEvery)
+	sleep(@cameraDelay)
 	send_event('camera1', image: make_web_friendly(new_file1))
 	send_event('camera2', image: make_web_friendly(new_file2))
 	send_event('camera3', image: make_web_friendly(new_file3))
